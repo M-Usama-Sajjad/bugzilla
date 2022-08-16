@@ -1,0 +1,11 @@
+<h1>Home#index</h1>
+<%= link_to "Sign_in", new_user_session_path %><br/>
+<%= link_to "Sign_up", new_user_registration_path	 %> <br/>
+<%= link_to "Sign_out", destroy_user_session_path,method: :delete%> <br/> <br/>
+<% if user_signed_in? && current_user.role == "Admin" %>
+<%= "Welcome to Admin Terminal"%><br/>
+<%= "Sir do you want to create Developer or QA "%> <br/>
+<%= link_to "Developer or QA", new_user_registration_path	 %> <br/>
+
+<% end %>
+
