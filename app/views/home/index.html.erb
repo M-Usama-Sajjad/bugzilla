@@ -4,8 +4,12 @@
 <%= link_to "Sign_out", destroy_user_session_path,method: :delete%> <br/> <br/>
 <% if user_signed_in? && current_user.role == "Admin" %>
 <%= "Welcome to Admin Terminal"%><br/>
-<%= "Sir do you want to create Developer or QA "%> <br/>
-<%= link_to "Developer or QA", new_user_registration_path	 %> <br/>
+<%= "Sir do you want to craete a bug "%> <br/>
+<%= link_to "create a bug", new_bug_path	 %> <br/>
+
+<%= link_to "see all users", users_index_path	 %> <br/>
+
+<%= link_to "edit users", edit_user_password_path	 %> <br/>
 
 <% end %>
 
