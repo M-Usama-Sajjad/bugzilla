@@ -1,0 +1,69 @@
+<%= form_with(model: bug) do |form| %>
+  <% if bug.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bug.errors.count, "error") %> prohibited this bug from being saved:</h2>
+
+      <ul>
+        <% bug.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+
+
+
+
+       <%= form.radio_button :status, 'resolved' %>resolved <br />
+       <%= form.radio_button :status, 'notsolved' %>notsolved<br />
+
+
+       <%elsif  current_user.role=='Develpor' && bug.status=="notsolved"%>
+       <%= form.radio_button :status, 'resolved' %>resolved <br />
+       <%= form.radio_button :status, 'notsolved' %>notsolved<br />
+
+
+  <%elsif current_user.role == 'QA' && bug.status=="resolved"%>
+<%= form.radio_button :status, 'Done'%> Done <br />
+<%= form.radio_button :status, 'Notdone'%> Notdone <br />
+
+
+
+
+<% end %>
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
