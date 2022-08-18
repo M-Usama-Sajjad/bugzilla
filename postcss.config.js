@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    require('postcss-import'),
+    require('post-import'),
     require('postcss-flexbugs-fixes'),
     require('postcss-preset-env')({
       autoprefixer: {

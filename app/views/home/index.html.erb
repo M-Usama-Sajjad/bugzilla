@@ -1,15 +1,16 @@
-<h1>Home#index</h1>
-<%= link_to "Sign_in", new_user_session_path %><br/>
-<%= link_to "Sign_up", new_user_registration_path	 %> <br/>
-<%= link_to "Sign_out", destroy_user_session_path,method: :delete%> <br/> <br/>
-<% if user_signed_in? && current_user.role == "Admin" %>
-<%= "Welcome to Admin Terminal"%><br/>
-<%= "Sir do you want to craete a bug "%> <br/>
-<%= link_to "create a bug", new_bug_path	 %> <br/>
+<%if current_user%>
 
-<%= link_to "see all users", users_index_path	 %> <br/>
+<div >
+  <h1 >
+  <%= current_user.first_name %>
+  <%= current_user.last_name %>
 
-<%= link_to "edit users", edit_user_password_path	 %> <br/>
+
+  </h1>
+  <br/>
+  <p >  Email :   <%= current_user.email %> </p>
+    <p > Role :    <%= current_user.role %></p>
+
+</div>
 
 <% end %>
-

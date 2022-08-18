@@ -3,31 +3,35 @@ class BugsController < ApplicationController
 
   # GET /bugs or /bugs.json
   def index
-    @bugs = Bug.all
 
+
+
+
+    @bugs = policy_scope(Bug.all)
+    authorize Bug
 
   end
 
-  # GET /bugs/1 or /bugs/1.json
+
   def show
     authorize Bug
 
   end
 
-  # GET /bugs/new
+
   def new
     @bug = Bug.new
     authorize Bug
 
   end
 
-  # GET /bugs/1/edit
+
   def edit
     authorize Bug
 
   end
 
-  # POST /bugs or /bugs.json
+
   def create
     authorize Bug
 
@@ -44,7 +48,7 @@ class BugsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bugs/1 or /bugs/1.json
+
   def update
     authorize Bug
 
@@ -59,7 +63,7 @@ class BugsController < ApplicationController
     end
   end
 
-  # DELETE /bugs/1 or /bugs/1.json
+
   def destroy
     authorize Bug
 
@@ -72,12 +76,10 @@ class BugsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_bug
       @bug = Bug.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def bug_params
       params.require(:bug).permit(:title, :description, :status, :image)
     end

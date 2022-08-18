@@ -1,17 +1,13 @@
 class BugPolicy < ApplicationPolicy
- class Scope < Scope
+  class Scope < Scope
     def resolve
-      if current_user.role=='Admin'
+      if user.role=='Admin'
         scope.all
-      elsif(current_user.role=='QA')
+      elsif(user.role=='QA')
 
         scope.where.not(status: 'Done' )
-      elsif(current_user.role=="Develpor")
-        scope.where(status: 'resolved')
-
-
-
-
+      elsif(user.role=='Develpor')
+        scope.where.not(status: 'resolved' )
       end
     end
   end
