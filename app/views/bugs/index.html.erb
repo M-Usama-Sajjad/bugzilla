@@ -1,8 +1,9 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Bugs</h1>
 
-<table class="table table-dark table-striped">  <thead>
+<table class="table table-dark table-striped">
+  <thead class="thead-dark">
     <tr>
       <th>Title</th>
       <th>Description</th>
@@ -17,9 +18,9 @@
         <td><%= bug.title %></td>
         <td><%= bug.description %></td>
         <td><%= bug.status %></td>
-        <td><%= link_to 'Show', bug %></td>
-        <td><%= link_to 'Edit', edit_bug_path(bug) %></td>
-        <td><%= link_to 'Destroy', bug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', bug ,class:"btn btn-secondary"%></td>
+        <td><%= link_to 'Edit', edit_bug_path(bug),class:"btn btn-secondary" %></td>
+        <td><%= link_to 'Destroy', bug, method: :delete, data: { confirm: 'Are you sure?'} ,class:"btn btn-danger" %></td>
       </tr>
     <% end %>
 
@@ -28,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Bug', new_bug_path %>
+<%= link_to 'New Bug', new_bug_path,class:"btn btn-secondary" %>

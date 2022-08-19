@@ -12,7 +12,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to (user.first_name+" "+user.last_name) , edit_user_registration_path%></td>
+        <td><%= user.first_name+" "+user.last_name%></td>
         <td><%= user.email %></td>
         <td><%= user.role %></td>
 

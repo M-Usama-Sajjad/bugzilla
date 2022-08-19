@@ -14,32 +14,37 @@
 
   <div class="field form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title,class:"form-control" %>
   </div>
 
   <div class="field form-group">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_field :description ,class:"form-control"%>
   </div>
 
   <div class="field form-group">
-    <%= form.label :status %>
 
 
 
-       <%if  current_user.role== 'Admin' %>
-       <%= form.radio_button :status, 'resolved' %>resolved <br />
-       <%= form.radio_button :status, 'notsolved' %>notsolved<br />
+       <%if  current_user.role== 'Admin' && bug.status=="notsolved"%>
+           <%= form.label :status %>
+
+       <%= form.radio_button :status, 'resolved',class:"form-control"%>resolved<br />
+       <%= form.radio_button :status, 'notsolved',class:"form-control" %>notsolved<br />
 
 
        <%elsif  current_user.role=='Develpor' && bug.status=="notsolved"%>
-       <%= form.radio_button :status, 'resolved' %>resolved <br />
-       <%= form.radio_button :status, 'notsolved' %>notsolved<br />
+           <%= form.label :status %>
+
+       <%= form.radio_button :status, 'resolved',class:"form-control" %>resolved <br />
+       <%= form.radio_button :status, 'notsolved',class:"form-control" %>notsolved<br />
 
 
   <%elsif current_user.role == 'QA' && bug.status=="resolved"%>
-<%= form.radio_button :status, 'Done'%> Done <br />
-<%= form.radio_button :status, 'Notdone'%> Notdone <br />
+      <%= form.label :status %>
+
+<%= form.radio_button :status, 'Done',class:"form-control"%> Done <br />
+<%= form.radio_button :status, 'Notdone',class:"form-control"%> Notdone <br />
 
 
 
@@ -60,11 +65,11 @@
 
 
   <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
+    <%= form.label :image  %>
+    <%= form.file_field :image ,class:"btn btn-secondary" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-secondary" %>
   </div>
 <% end %>

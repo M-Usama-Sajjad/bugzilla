@@ -26,12 +26,15 @@ def index?
   def create?
     return true if user.present? and (user.role=='Admin'||user.role=='QA')
   end
-  def update?
-    if user.present?
-      return true
-    else
 
-    end
+
+  def update?
+     if user.present? and user.role=='Admin'
+        return true
+      elsif user.present? and  user.role == 'Develpor' and record.status == 'notsolved'
+        return true
+
+      end
   end
 
 

@@ -27,7 +27,7 @@ class BugsController < ApplicationController
 
 
   def edit
-    authorize Bug
+    authorize @bug
 
   end
 
@@ -38,6 +38,7 @@ class BugsController < ApplicationController
     @bug = Bug.new(bug_params)
 
     respond_to do |format|
+      @bug.status = 'notsolved'
       if @bug.save
         format.html { redirect_to bug_url(@bug), notice: "Bug was successfully created." }
         format.json { render :show, status: :created, location: @bug }
@@ -50,7 +51,7 @@ class BugsController < ApplicationController
 
 
   def update
-    authorize Bug
+    authorize @bug
 
     respond_to do |format|
       if @bug.update(bug_params)
